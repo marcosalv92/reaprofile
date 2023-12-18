@@ -122,7 +122,7 @@ async def get_all_users(user: Annotated[User, Depends(get_current_user)]):
     
 
 
-@router.get('/all/')
+@router.get('/all')
 async def get_all_users(user: Annotated[User, Security(get_current_active_user, scopes=["admin"])]) -> list[User]:
     return users_schema(db_client.users.find())
 
